@@ -1,0 +1,99 @@
+----------------
+STEP 1: LOADING
+----------------
+
+Load the documents through "loader classes" from LangChain
+* TextLoader
+* UnstructuredURLLoader
+
+https://python.langchain.com/v0.1/docs/modules/data_connection/document_loaders/
+https://pypi.org/project/unstructured/
+
+For API and to load UnstructuredURL
+https://python.langchain.com/docs/integrations/document_loaders/unstructured_file/
+
+
+WEB BASED LOADER:
+https://python.langchain.com/docs/integrations/document_loaders/web_base/
+pre-req: pip install beautifulsoup4
+
+
+----------------------
+STEP 2: TEXT SPLITING
+----------------------
+
+* CharacterTextSplitter
+* RecursiveTextSpliter
+Reason: LLM have token size. So these splitters will reduce the token size
+
+----------------------------------
+STEP 3: VECTOR DATABASE --> FAISS
+----------------------------------
+
+Faiss --> Light weight, in-memory
+Facebook AI Similarity Search
+* Allows use to faster search into set of vectors that you have
+* It can also be used as a vector database
+(if project is smaller and requirements are light weight)
+
+Packages:
+pip install faiss-cpu
+pip install sentence-transformers
+
+Sentence Transformer model: "ap-mpnet-base-v2"
+ref: https://huggingface.co/sentence-transformers
+
+
+Database Index: IndexFlatL2
+IndexFlatL2 - creating a database index that allows to do faster search
+ref: https://faiss.ai/cpp_api/struct/structfaiss_1_1IndexFlatL2.html
+
+-----------------
+STEP 4: RETRIVAL
+-----------------
+* Extract the relevant chunk from the Vector DB
+
+
+---------------
+STEP 5: PROMPT
+---------------
+* LLM gives the answer based on the chunk extracted
+
+
+
+---------
+DRAWBACK
+---------
+1. What if the combined chunk exceeds the token limit of LLM?
+Solution:
+Usage of "Map-Reduce" Method
+issue: Making llm calls for each chunk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
